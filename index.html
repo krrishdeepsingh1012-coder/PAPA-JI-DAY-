@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="envelope-screen" class="screen">
+        <div class="envelope" onclick="showContent()">💌 Tap to Open</div>
+    </section>
+
+    <div id="main-content" class="hidden">
+        
+        <section class="card">
+            <h3>Dedicated Song</h3>
+            <audio controls src="your-song.mp3"></audio>
+        </section>
+
+        <section class="card">
+            <h3>Our Little Album</h3>
+            <div class="slider">
+                <img src="photo1.jpg" alt="Memory">
+            </div>
+        </section>
+
+        <section class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">Three things I never said...</div>
+                <div class="card-back">Note content revealed here!</div>
+            </div>
+        </section>
+
+        <section class="letter">
+            <h2>Dear Dad,</h2>
+            <p>Your heartfelt message goes here...</p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
