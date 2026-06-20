@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dad</title>
+    <style>
+        body { margin: 0; background: #fdfbf7; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow-x: hidden; }
+        .container { width: 90%; max-width: 400px; text-align: center; }
+        
+        /* Envelope Styles */
+        #envelope-screen { cursor: pointer; transition: opacity 0.5s; }
+        .envelope { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        /* Main Content Styles */
+        .hidden { display: none; }
+        .section { background: white; margin: 20px 0; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        
+        /* Card Flip Effect */
+        .card { perspective: 1000px; cursor: pointer; }
+        .card-inner { transition: transform 0.6s; transform-style: preserve-3d; position: relative; height: 100px; }
+        .card.flipped .card-inner { transform: rotateY(180deg); }
+        .front, .back { position: absolute; width: 100%; backface-visibility: hidden; }
+        .back { transform: rotateY(180deg); }
+    </style>
 </head>
 <body>
 
-    <section id="envelope-screen" class="screen">
-        <div class="envelope" onclick="showContent()">💌 Tap to Open</div>
-    </section>
-
-    <div id="main-content" class="hidden">
-        
-        <section class="card">
-            <h3>Dedicated Song</h3>
-            <audio controls src="your-song.mp3"></audio>
-        </section>
-
-        <section class="card">
-            <h3>Our Little Album</h3>
-            <div class="slider">
-                <img src="photo1.jpg" alt="Memory">
-            </div>
-        </section>
-
-        <section class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">Three things I never said...</div>
-                <div class="card-back">Note content revealed here!</div>
-            </div>
-        </section>
-
-        <section class="letter">
-            <h2>Dear Dad,</h2>
-            <p>Your heartfelt message goes here...</p>
-        </section>
+    <div id="envelope-screen" class="container" onclick="reveal()">
+        <div class="envelope">💌 Tap to open a gift for Dad</div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="main-content" class="container hidden">
+        <div class="section">
+            <h2>For My First Hero</h2>
+            <audio controls style="width:100%"><source src="song.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="section card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="front"><h3>Tap to see a secret note</h3></div>
+                <div class="back"><p>I am so proud to be yours.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function reveal() {
+            document.getElementById('envelope-screen').style.display = 'none';
+            document.getElementById('main-content').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
